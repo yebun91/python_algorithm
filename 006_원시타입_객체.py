@@ -9,7 +9,27 @@
 # bool - 불변, int - 불변, float - 불변, list - 가변
 # tuple - 불변, str - 불변, set - 가변, dict - 가변
 
+
 a = 10
 b = a
 print(f'{id(10)}, {id(a)}, {id(b)}')
 # 파이썬은 객체이므로 메모리 상에 위치한 객체의 주소를 얻어오는 id() 함수를 실행한 결과는 모두 동일하다.
+
+c = [1, 2, 3, 4, 5]
+d = c
+print(d)
+c[2] = 4
+print(f'{c}, {d}')
+
+# is와 ==
+# 파이썬의 비교 연산자 중 is와 ==가 있다. 먼저 is는 id() 값을 비교하는 함수다.
+# None은 null로 값 자체가 정의되어 있지 않으므로 ==로 비교가 불가능하다. 따라서 다음과 같이 is로만 비교가 가능하다.
+if a is None:
+    pass
+
+e = [1, 2, 3]
+print(e == e)  # True
+print(e == list(e))  # True
+print(e is e)  # True
+print(e is list(e))  # False
+# 값은 동일하지만 list()로 한 번 더 묶어주면, 별도의 객체로 복사가 되고 다른 ID를 갖게 된다. 따라서 is는 False가 된다.

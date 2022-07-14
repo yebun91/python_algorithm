@@ -19,3 +19,23 @@ print(Solution().mostCommonWord(paragraph, banned))
 
 # 입력값에는 대소문자가 섞여 있으며 쉼표 등 구두점이 존재하낟. 따라서 데이터 클렌징이 필요하다.
 # 정규식에서 \w는 단어문자를 뜻하며 ^은 not을 의미한다. 위의 정규식은 단어 문자가 아닌 모든 문자를 공백으로 치환하는 역할을 한다.
+
+
+class Solution2:
+    def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
+        paragraph = paragraph.lower()
+        paragraph = re.sub("[!?',;.]", ' ', paragraph)
+        paragraph_list = paragraph.split(" ")
+        words = []
+        for text in paragraph_list:
+            if text in banned or text == '':
+                continue
+            else:
+                words.append(text)
+        counts = collections.Counter(words)
+        return counts.most_common(1)[0][0]
+
+
+print(Solution2().mostCommonWord(paragraph, banned))
+
+# 내가 좀 더 알아보기 쉽게 고침..

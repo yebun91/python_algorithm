@@ -36,5 +36,10 @@ print(re.sub('^[0-9]{3}-[0-9]{4}-[0-9]{4}', "***-****-****", text))
 print(max('zzaa', 'zzab', key=len))  # zzaa
 print(max('aaaaa', 'bbb', 'cc', 'd', key=len))  # aaaaa
 
+# enumerate : 인덱스와 원소를 동시에 접근하면서 루프를 돌릴수 있게 함.
+nums = [2, 7, 11, 15]
+for i, n in enumerate(nums):
+    print(i, n)
+
 # 데크 선언
 strs = collections.deque()

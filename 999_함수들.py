@@ -32,5 +32,9 @@ print(re.sub('^[0-9]{3}-[0-9]{4}-[0-9]{4}', "***-****-****", text))
 # join : 리스트 형태의 문자를 하나의 문자열로 만들어줌
 "".join(sorted(["f", "e", "d", "c", "b", "a"]))  # abcdef
 
+# max : 문자열의 길이가 가장 큰 것을 반환한다. 단 최댓값의 길이가 두 개 이상 있을 경우 index가 가장 작은 것을 출력한다.
+print(max('zzaa', 'zzab', key=len))  # zzaa
+print(max('aaaaa', 'bbb', 'cc', 'd', key=len))  # aaaaa
+
 # 데크 선언
 strs = collections.deque()

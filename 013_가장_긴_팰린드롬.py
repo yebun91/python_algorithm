@@ -15,10 +15,10 @@ class Solution:
         result = ''
         for i in range(len(s) - 1):
             result = max(result,      # max(str, str, key=len) : 길이가 더 긴 문자열 반환
-                         expand(i, i + 1),  # 2개
-                         expand(i, i + 2),  # 3개
-                         key=len
-                         )
+                          expand(i, i + 1),  # 2개
+                          expand(i, i + 2),  # 3개
+                          key=len
+                        )
 
         return result
 

@@ -1,30 +1,6 @@
 a, b = input().split()
 
-maxA = ""
-maxB = ""
-minA = ""
-minB = ""
+max = int(a.replace('5','6'))+ int(b.replace('5','6'))
+min = int(a.replace('6','5'))+ int(b.replace('6','5'))
 
-for n in a:
-  if int(n) == 5:
-    maxA = maxA + '6'
-    minA = minA + '5'
-  elif int(n) == 6:
-    maxA = maxA + '6'
-    minA = minA + '5'
-  else: 
-    maxA = maxA + str(n)
-    minA = minA + str(n)
-
-for n in b:
-  if int(n) == 5:
-    maxB = maxB + '6'
-    minB = minB + '5'
-  elif int(n) == 6:
-    maxB = maxB + '6'
-    minB = minB + '5'
-  else: 
-    maxB = maxB + str(n)
-    minB = minB + str(n)
-
-print(int(minA)+int(minB), int(maxA)+int(maxB))
+print(min, max)

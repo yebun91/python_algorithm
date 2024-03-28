@@ -1,28 +1,20 @@
-import heapq
-
 n = int(input())
+w = [] #[[과제 마감일, 과제의 점수]]
 
-hq = []
-max_day = 0
-for i in range(n):
-    d, w = map(int, input().split())
-    heapq.heappush(hq, (-w, d))
-    if max_day < d:
-        max_day = d
+for _ in range(n):
+  t, s = map(int, input().split())
+  w.append([t, s])
 
-assigned = [False] * (max_day + 1)
+w.sort(key= lambda x: (-x[1]))
+zero_list = [0] * max(w)[0] 
 
-score = 0
-while hq:
-    w, d = heapq.heappop(hq)
-    w = -w
+for i in w :
+  index = i[0] -1
+  while index >= 0:
+    if zero_list[index] < i[1]:
+      zero_list[index] = i[1]
+      break
+    else:
+      index -= 1
 
-    for i in range(d, 0, -1):
-        if assigned[i]:
-            continue
-
-        assigned[i] = True
-        score += w
-        break
-
-print(score)
+print(sum(zero_list))

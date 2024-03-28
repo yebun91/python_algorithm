@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 n = int(input())
 w = [] #[[일을 하는데 걸리는 시간, 이 시간 전까지 끝내야 함]]
 

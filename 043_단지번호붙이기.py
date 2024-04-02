@@ -34,7 +34,7 @@ def bfs(x, y):
 for i in range(n):
   for j in range(m):
     if edges[i][j] == 1 and not visited[i][j]:
-      dfs(i, j)
+      bfs(i, j)
 
 print(len(result))
 print(*sorted(result), sep='\n')

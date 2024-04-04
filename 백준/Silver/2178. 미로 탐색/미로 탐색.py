@@ -1,28 +1,30 @@
+import sys
 from collections import deque
-    # 상  하  좌  우
+input = lambda: sys.stdin.readline().strip()
+
+x, y = map(int, input().split())
+miro = [list(map(int, (input()))) for _ in range(x)]
+check = [[0] * y for _ in range(x)]
+
 dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1 ]
-queue = deque([(0, 0)]) # 큐 생성 후 초기 위치
-n, m = map(int, input().split())
-maze = [list(map(int, list(input()))) for _ in range(n)]
+dy = [0, 0, -1, 1]
 
-while queue:
-    x, y = queue.popleft() # 맨 처음엔 0, 0
-    # 현재 위치에서 4가지 방향으로 위치 확인
-    for i in range(4): 
-        nx = x + dx[i]
-        ny = y + dy[i]
+def bfs():
+  queue = deque([(0, 0)])
+  check[0][0] = 1
 
-        # 범위를 벗어나면 무시
-        if nx < 0 or ny < 0 or nx >= n or ny >= m:
-            continue
-        # 벽인 경우 무시
-        if maze[nx][ny] == 0:
-            continue
-        # 해당 노드를 처음 방문하는 경우에만 기록
-        if maze[nx][ny] == 1:
-            maze[nx][ny] = maze[x][y] + 1
-            queue.append((nx, ny))
-            
+  while queue:
+    queueX, queueY = queue.popleft()  
+    if queueX == x-1 and queueY == y-1:
+      return check[queueX][queueY]
+    
+    for i in range(4):
+      mx, my = queueX + dx[i], queueY + dy[i]
+      if mx < 0 or my < 0 or mx >= x or my >= y:
+        continue
+      if miro[mx][my] == 1 and check[mx][my] == 0:
+        queue.append((mx, my))
+        check[mx][my] = check[queueX][queueY] + 1
+  return -1
 
-print(maze[n-1][m-1])
+print(bfs())

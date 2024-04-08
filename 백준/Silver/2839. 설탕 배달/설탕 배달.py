@@ -1,16 +1,14 @@
 n = int(input()) 
-f = n // 5  # 5킬로그램 봉지의 개수
-result = -1
+result = 0
 
-# 5킬로그램 봉지가 0개 이상 일때
-while f >= 0 :
-  r = n - (f * 5) # 남은 설탕의 양
-  if r % 3 == 0: # 남은 설탕이 3킬로 봉지에 나눠지는지
-    t = r // 3
-    result = f+t
+while n >= 0:
+  if n % 5 == 0:
+    result += (n // 5)
     break
-  # 남은 설탕이 3킬로 봉지에 나눠지지 않으면 5킬로 봉지를 하나 제거함
-  f -= 1
-  # 5킬로 봉지를 계속 제거하는데 더이상 제거할 5킬로 봉지가 없을 때 -1을 반환
+  n -= 3
+  result += 1
+
+if n < 0:
+  result = -1
 
 print(result)

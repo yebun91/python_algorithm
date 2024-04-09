@@ -1,10 +1,12 @@
 n = int(input())
 w = list(map(int, input().split()))
-sortW = sorted(w)
+w.sort()
+
 addNum = 0
 result = 0
-for m in sortW :
-  addNum += m
+
+for num in w:
+  addNum += num
   result += addNum
 
 print(result)

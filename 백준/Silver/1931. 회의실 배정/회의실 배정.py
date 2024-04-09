@@ -1,3 +1,6 @@
+import sys
+input = lambda: sys.stdin.readline().strip()
+
 n = int(input())
 m = [list(map(int, input().split())) for _ in range(n)]
 

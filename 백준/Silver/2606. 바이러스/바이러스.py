@@ -1,36 +1,24 @@
-import sys
-from collections import deque
-input = lambda: sys.stdin.readline().strip()
-
+computer = int(input())
 n = int(input())
-m = int(input())
-edges = [list(map(int, input().split())) for _ in range(m)]
+graph = [list(map(int, input().split())) for _ in range(n)]
+sortedGraph = [[] for _ in range(computer + 1)]
+check = [False] * (computer + 1)
 
-result = []
+for com in graph:
+  a, b = com
+  sortedGraph[a].append(b)
+  sortedGraph[b].append(a)
 
-def createGraph(edges, n):
-  graph = [[] for _ in range(n + 1)]
-  for edge in edges :
-    a, b = edge
-    graph[a].append(b)
-    graph[b].append(a)
+result = 0
 
-  return graph
+def dfs(n):
+  global result
+  check[n] = True
+  for c in sortedGraph[n]:
+    if not check[c]:
+      result += 1
+      dfs(c)
 
-graph = createGraph(edges, n)
+dfs(1)
 
-def bfs(edges):
-  visited = [False] * len(edges)
-  queue = deque([1])
-  visited[1] = True
-  while queue:
-    vertex = queue.popleft()
-    result.append(vertex)
-    for nextVertex in edges[vertex]:
-      if not visited[nextVertex]:
-        visited[nextVertex] = True
-        queue.append(nextVertex)
-
-bfs(graph)
-
-print(len(result)-1)
+print(result)

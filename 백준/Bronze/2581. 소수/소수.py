@@ -4,7 +4,7 @@ def find_prime(M, N):
     for number in range(M, N+1):
         if number > 1:
             for i in range(2, number):
-                if number % i == 0:
+                if i * i <= number  and number % i == 0:
                     break
 
             else: result.append(number)

@@ -1,6 +1,21 @@
-number = input()
+def count_to_turn_out(s):
+    all_make_zero = 0
+    all_make_one = 0
 
-zero = [ x for x in number.split("1") if x ]
-one = [ x for x in number.split("0") if x ]
+    if s[0] == '0':
+        all_make_one += 1
+    else:
+        all_make_zero += 1
 
-print(min(len(zero), len(one)))
+    for i in range(1, len(s)):
+        if s[i] != s[i-1]:
+            if s[i] == "0":
+                all_make_one += 1
+            else:
+                all_make_zero += 1
+
+    print(min( all_make_zero, all_make_one))
+
+
+s = input()
+count_to_turn_out(s)
